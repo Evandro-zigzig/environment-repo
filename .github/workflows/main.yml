@@ -22,7 +22,7 @@ jobs:
         
   production-deploy:
     runs-on: ubuntu-latest
-    environment: homolog
+    environment: production
     needs: [test]
     steps:
       - name: environment deploy   
