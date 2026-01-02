@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: homolog
     steps:
       - name: deploy   
         run: echo "environment deploy of ${{vars.environment_deploy}}"
