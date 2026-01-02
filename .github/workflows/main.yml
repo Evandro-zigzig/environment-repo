@@ -1,0 +1,13 @@
+name: CD-test
+
+on:
+
+  workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy   
+        run: echo "environment deploy of ${{vars.environment_deploy}}"
+
