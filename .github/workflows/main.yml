@@ -3,18 +3,28 @@ name: CD-test
 on:
 
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        options: 
-            - homolog
-            - production
 
 jobs:
-  deploy:
+  homolog-deploy:
     runs-on: ubuntu-latest
-    environment: ${{inputs.environment}}
+    environment: homolog
     steps:
-      - name: deploy   
+      - name: environment deploy   
         run: echo "environment deploy of ${{vars.environment_deploy}}"
+
+  test:
+    runs-on: ubuntu-latest
+    environment: homolog
+    needs: [homolog-deploy]
+    steps:
+      - name: environment deploy   
+        run: echo "environment deploy of ${{vars.environment_deploy}}"
+        
+  production-deploy:
+    runs-on: ubuntu-latest
+    environment: homolog
+    needs: [test]
+    steps:
+      - name: environment deploy   
+        run: echo "environment deploy of ${{vars.environment_deploy}}"       
 
