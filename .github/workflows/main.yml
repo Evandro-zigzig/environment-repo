@@ -3,11 +3,17 @@ name: CD-test
 on:
 
   workflow_dispatch
+    inputs:
+      environment:
+        type: choice
+        options: 
+            - homolog
+            - production
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: homolog
+    environment: ${{environment}}
     steps:
       - name: deploy   
         run: echo "environment deploy of ${{vars.environment_deploy}}"
